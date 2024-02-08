@@ -23,4 +23,8 @@ public class Primenumber {
 		}
 		return true;
 	}
+	
+	
+	
+	
 }
