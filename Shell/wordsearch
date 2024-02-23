@@ -1,0 +1,12 @@
+echo "enter the word"
+read word
+echo "enter the file name:"
+read filename
+echo "Enter the start line"
+read start_line
+echo "enter the end line"
+read end_line
+count=`expr $end_line - $start_line+1`
+echo "$count"
+head -n $end_line $f | tail -n $count > out.txt
+grep -c $word out.txt
