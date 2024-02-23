@@ -1,0 +1,29 @@
+1)select * from department;
+2)select title from course order by title;
+
+3)select name from instructor;
+
+4)select name from student where name regexp '^[a]';
+
+5)select name from student where name NOT like "a%" and name NOT like "%a";
+
+6)select semester from section;
+
+7)select dept_name,budget from department;
+
+8)select title,credits from course order by credits,title;
+
+9)select distinct dept_name from course;
+
+10)select title from course where dept_name in ('Biology','Comp. Sci.');
+
+11)select dept_name from department where budget=70000 and building in ('Watson');
+
+12)select * from classroom where capacity>100;
+
+13)select name,salary,salary*1.2 as hiked_salary from instructor;
+
+14)select * from time_slot where start_hr=08 and start_min=00;
+
+15)select * from department where building="Painter";
+

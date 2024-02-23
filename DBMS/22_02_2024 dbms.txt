@@ -1,0 +1,22 @@
+1)select student.name,instructor.name from student,instructor,advisor where advisor.s_id=student.id
+and advisor.i_id=instructor.id;
+
+2)select student.name,instructor.name from student,instructor,advisor where advisor.s_id=student.id and advisor.i_id=instructor.id and instructor.name="Desyl";
+
+3)select instructor.name,count(student.name) as count from student,instruct
+or,advisor where advisor.s_id=student.id and advisor.i_id=instructor.id group by
+ instructor.name;
+
+4)select student.name from student,department where student.dept_name=department.dept_name and building="main";
+
+5)select max(salary),min(salary) from instructor;
+
+6)select avg(budget) from department;
+
+7)select count(*) from course where credits=3;
+
+8)select s.name from student s,takes where takes.id=s.id and grade="A-" and takes.semester="Spring" and takes.year=2010;
+
+9)
+
+

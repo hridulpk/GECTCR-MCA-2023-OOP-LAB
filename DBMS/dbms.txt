@@ -1,0 +1,67 @@
+create table time_slot(time_slot_id varchar(20),day varchar(15),start_time varchar(20),end_time varchar(20),primary key(time_slot_id,day,start_time));
+
+
+create table section(course_id varchar(20),sec_id varchar(20),semester numeric(2),year numeric(4),building varchar(20),room_no numeric(4),time_slot_id varchar(20),primary key(course_id,sec_id,semester,year));
+
+ create table classroom(building varchar(20),room_no numeric(4),capacity numeric(4),primary key(building,room_no));
+
+ create table takes(id varchar(15),course_id varchar(20),sec_id varchar(20),semester numeric(2),year numeric(4),grade varchar(20),primary key(id,course_id,sec_id,semester,year));
+
+ create table course(course_id varchar(20) primary key,title varchar(20),dept_name varchar(20),credits numeric(4));
+
+create table advisor(s_id varchar(20),i_id varchar(20),primary key(s_id,i_id));
+
+create table prereq(course_id varchar(20),prereq_id varchar(20),primary key(course_id,prereq_id));
+
+create table instructor(id varchar(20) primary key,name varchar(20),dept_name varchar(20),salary numeric(10));
+
+create table teaches(id varchar(15),course_id varchar(20),sec_id varchar(20),semester numeric(2),y
+ear numeric(4),primary key(id,course_id,sec_id,semester,year));
+
+alter table takes add constraint takes_foreign foreign key(course_id,sec_id,semester,year)references section(course_id,sec_id,semester,year);
+
+alter table takes add constraint takes_foreign2 foreign key(id)references student(id);
+
+alter table advisor add constraint advisor_foreign foreign key(s_id)references student(id);
+
+ alter table advisor add constraint advisor_foreign2 foreign key(i_id)references instructor(id);
+
+alter table course add constraint course_foreign foreign key(dept_name)references department(dept_name);
+
+alter table course add constraint course_foreign foreign key(dept_name)references department(dept_name);
+
+ alter table teaches add constraint teaches_foreign foreign key(course_id,sec_id,semester,year)references section(course_id,sec_id,semester,year);
+
+alter table teaches add constraint teaches_foreign2 foreign key(id)references instructor(id);
+
+
+alter table prereq add constraint prereq_foreign2 foreign key(prereq_id)references course(course_id);
+
+alter table section add constraint section_foreign foreign key(building,room_no)references classroom(building,room_no);
+
+alter table prereq add constraint prereq_foreign foreign key(course_id)references course(course_id);
+
+
+alter table prereq add constraint prereq_foreign2 foreign key(prereq_id)references course(course_i
+d);
+
+
+alter table instructor add aadhar numeric(20) NOT NULL;
+
+
+alter table student add phone_number varchar(10);
+
+alter table student rename column phone_number to mob_number;
+
+alter table student modify column mob_number integer(10);
+
+alter table department add constraint unique(building);
+
+alter table student drop column mob_number;
+
+alter table student drop foreign key fk_dept;
+alter table section drop foreign key section_foreign;
+
+
+
+
