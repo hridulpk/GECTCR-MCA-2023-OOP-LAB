@@ -17,7 +17,7 @@ public class ArrayUtil {
 			}
 	}
 	private void DisplayArr() {
-			for(int i=0;i<n;i++) {
+			for(int i=0;i<size;i++) {
 				System.out.println(a[i]);
 			}
 	}
@@ -29,7 +29,6 @@ public class ArrayUtil {
 		int value;
 		System.out.println("enter the element to be searched: ");
 		value=sc.nextInt();
-		obj
 		
 	}
 

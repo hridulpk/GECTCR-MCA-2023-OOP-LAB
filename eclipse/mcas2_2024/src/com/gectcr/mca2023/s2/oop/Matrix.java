@@ -1,3 +1,5 @@
+package com.gectcr.mca2023.s2.oop;
+
 import java.util.Scanner;
 public class Matrix{
 	private int row;

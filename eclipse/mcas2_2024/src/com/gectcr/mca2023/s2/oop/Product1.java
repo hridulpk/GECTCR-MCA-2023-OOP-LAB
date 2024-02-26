@@ -1,6 +1,6 @@
 package com.gectcr.mca2023.s2.oop;
 
-public class Product1 {
+public class Product1 implements Comparable<Product> {
 	private long pcode;
 	private String pname;
 	private double price;
@@ -9,6 +9,10 @@ public class Product1 {
 		this.price=price;
 		this.pname=name;
 		this.pcode=pcode;
+	}
+	public int compareTo(Product p) {
+		return (int)price -(int)p.getPrice();
+		
 	}
 	
 	public String toString() {
