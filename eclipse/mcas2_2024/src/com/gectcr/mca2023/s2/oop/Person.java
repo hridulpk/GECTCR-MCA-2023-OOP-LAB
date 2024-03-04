@@ -12,30 +12,15 @@ public class Person {
 		this.gender = gender;
 		this.address = address;
 		this.age = age;
+		
+		
 	}
-public class Employee extends Person{
-	public Employee(String name, String gender, String address, int age) {
-		super(name, gender, address, age);
-		// TODO Auto-generated constructor stub
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", gender=" + gender + ", address=" + address + ", age=" + age + "]";
 	}
-	private String Empid;
-	private String company_name;
-	private String Qualification;
-	private int salary;
-	
-}
-public class Teacher extends Employee{
-	public Teacher(String name, String gender, String address, int age) {
-		super(name, gender, address, age);
-		// TODO Auto-generated constructor stub
-	}
-	private String Subject;
-	private String Department;
-	private String teacher_id;
-}
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
