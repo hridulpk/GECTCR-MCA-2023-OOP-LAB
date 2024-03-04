@@ -1,15 +1,15 @@
 echo "Enter the elements"
 read -a arr
 n=${#arr[@]}
-for ((i=0;i<n-1;i++))
+for ((i=0;i<n;i++))
 do
-	for ((j=i+1;j<n;j++))
+	for ((j=0;j<n-i-1;j++))
 	do
-		if [ ${arr[i]} -gt ${arr[j]} ]
+		if [ ${arr[j]} -gt ${arr[j+1]} ]
 		then 
-			t=${arr[i]}
-			arr[i]=${arr[j]}
-			arr[j]=$t
+			t=${arr[j]}
+			arr[j]=${arr[j+1]}
+			arr[j+1]=$t
 		fi
 	done
 done

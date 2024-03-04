@@ -12,3 +12,6 @@ else
 	da=$(($basic * 96/100))
 	echo "DA=$da"
 fi
+gross_sal=$(($basic+$hra+$da))
+echo "Gross salary is $gross_sal"
+

@@ -12,7 +12,7 @@ do
  case $choice in 
  	1)res=`echo $num1 + $num2 | bc`;;
  	2)res=`echo $num1 - $num2 | bc`;;
- 	3)res=`echo $num1 * $num2 | bc`;;
+ 	3)res=`echo $num1 \* $num2 | bc`;;
  	4)if [ $num2 -eq 0 ];
  	  then
  	  	echo "Division by zero"
