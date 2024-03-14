@@ -1,0 +1,32 @@
+1)
+delimiter $$
+drop procedure if exists c_table;
+create procedure c_table(out no integer)
+begin
+drop table if exists mca_faculty;
+create table mca_faculty(id integer primary key,name varchar(30),desgination varchar(50));
+insert into mca_faculty values (1,"Dr.Sminesh","Hod");
+insert into mca_faculty values (2,"Dr.Jayasree","Associate Professor");
+insert into mca_faculty values (3,"Soumia","Assistant Professor");
+insert into mca_faculty values (4,"Raseek","Assistant Professor");
+select count(*) into no from mca_faculty;
+end $$
+
+
+delimiter ;
+
+
+2)
+
+delimiter $$
+drop procedure if exists stud_disp;
+create procedure stud_disp(in gr varchar(10))
+begin
+select s.name,c.title from student s,takes t,course c where s.id=t.id and c.course_id=t.course_id and grade=gr;
+select count(distinct s.name) from student s,takes t,course c where s.id=t.id and c.course_id=t.course_id and grade=gr;
+end $$
+
+
+delimiter ;
+
+
