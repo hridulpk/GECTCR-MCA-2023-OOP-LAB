@@ -18,7 +18,7 @@ public class StudentHashmap {
 		for(Integer i : student.keySet()) {
 			String temp=student.get(i);
 			if(temp.equals(name)) {
-				System.out.println("roll no:"+i+" name:"+student.get(i));
+				System.out.println("roll no:"+i+" ename:"+student.get(i));
 			}
 		}
 	}
