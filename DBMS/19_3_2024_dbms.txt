@@ -1,0 +1,52 @@
+3)
+
+delimiter $$
+drop procedure if exists kturesult;
+create procedure kturesult(in roll_no integer,c_id integer)
+begin
+declare x varchar(5);
+declare gp decimal(8,2);
+select grade into x from s1mca where rollno=roll_no and cid=c_id;
+if (x='S') then
+set gp=10.00;
+elseif (x='A+') then
+set gp=9.0;
+elseif (x='A') then
+set gp=8.5;
+elseif (x='B+') then
+set gp=8.0;
+elseif (x='B') then
+set gp=7.5;
+elseif (x='C+') then
+set gp=7.0;
+elseif (x='C') then
+set gp=6.5;
+elseif (x='D') then
+set gp=6.0;
+elseif (x='P') then
+set gp=5.5;
+elseif (x='F') then
+set gp=0.0;
+end if;
+select s.name 'name',s.rollno 'rollno',m.cid 'id',c.title 'title',m.grade 'grade' ,gp 'Grade_point' from s1mca m,course c,student s where s.rollno=roll_no and m.cid=c_id and s.rollno=m.rollno and m.cid=c.id;
+end $$
+delimiter ;
+
+
+4)
+
+delimiter $$
+drop procedure if exists choice_123;
+create procedure choice_123(in roll_no integer,c_id integer,choice varchar(20))
+begin
+if (choice='select') then
+select * from s1mca where rollno=roll_no and cid=c_id;
+elseif (choice='delete') then
+delete from s1mca where rollno=roll_no and cid=c_id;
+elseif (choice='update') then
+update s1mca set grade='S' where rollno=roll_no;
+end if;
+end $$
+delimiter ;
+
+
