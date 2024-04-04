@@ -1,0 +1,50 @@
+delimiter $$
+drop procedure if exists cursor_cpg ;
+create procedure cursor_cpg(in regno int)
+begin
+    DECLARE done BOOL DEFAULT false; 
+    DECLARE cgp float DEFAULT 0.0;
+    DECLARE tot_cred int DEFAULT  0;    
+    DECLARE gp float DEFAULT 0.0;
+    DECLARE course_id  int;
+    DECLARE grp varchar(3);
+    DECLARE cred int;
+    DECLARE grd varchar(10);
+    DECLARE cur CURSOR FOR select cid,grade from s1mca where rollno=regno;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=true;
+    OPEN cur;
+    process_cgpa : LOOP 
+    FETCH cur INTO course_id, grd ;
+    IF done = true then leave process_cgpa;
+    end if;
+    select credit into cred from course where id = course_id;
+    if grd = "S" then set gp = 10.0;
+    end if;
+    if grd = "A+" then set gp = 9.0;
+    end if;
+    if grd = "A" then set gp = 8.5;
+    end if;
+    if grd = "B+" then set gp = 8.0;
+    end if;
+    if grd = "B" then set gp = 7.5;
+    end if;
+    if grd = "C+" then set gp = 7.0;
+    end if;
+    if grd = "C" then set gp = 6.5;
+    end if;
+    if grd = "D" then set gp = 6.0;
+    end if;
+    if grd = "P" then set gp = 5.5;
+    end if;
+    if grd = "F" then set gp = 0.0;
+    end if;
+    
+    set cgp=cgp+cred*gp;
+    set tot_cred=tot_cred + cred;
+    select gp;
+    end LOOP;
+    set cgp = cgp / tot_cred;
+    update student set cgpa = cgp where rollno = regno;
+    CLOSE cur;
+end$$
+delimiter ;
